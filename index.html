@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Display a popup on click</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+<style>
+	body { margin: 0; padding: 0; }
+	#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<style>
+    .mapboxgl-popup {
+        max-width: 400px;
+        font: 12px/20px 'Montserrat', sans-serif;
+    }
+</style>
+<div id="map"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoibWhyMTIzNCIsImEiOiJja2VoNGNmMjMwN2cxMnhtcDhmczhkejk1In0.rV_j8ObNnxnglm1YuwdNtw';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [24.031111, 49.842957],
+        zoom: 12.10
+    });
+
+    map.on('load', function() {
+        map.addSource('places', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': [
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>Lychakivsky Cemetery</strong><p><a href="https://www.lonelyplanet.com/ukraine/western-ukraine/lviv/attractions/lychakivsky-cemetery/a/poi-sig/1130095/360948" target="_blank" title="Opens in a new window">Lychakivsky Cementery</a> Do not leave until you have seen this amazing 42-hectare cemetery, only a short ride on tram 7 from the centre. This is the Père Lachaise of Eastern Europe, with the same sort of overgrown grounds and Gothic aura as the famous Parisian necropolis (but containing less-well-known people). </p>',
+                            'icon': 'cemetery'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [24.0561, 49.8325]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>High Castle</strong><p><a href="https://www.lonelyplanet.com/ukraine/western-ukraine/lviv/attractions/high-castle-hill/a/poi-sig/448547/360948"target="_blank" title="Opens in a new window">High Castle</a>(Vysoky Zamok) on Castle Hill (Zamkova Hora) is a quintessential Lviv experience. There’s little evidence of the 14th-century ruined stone fort that was Lviv’s birthplace, but the summit mound sporting a mammoth Ukrainian flag thwacking in the wind offers 360-degree views of the city and the wooded hills between which it nestles.</p>',
+                            'icon': 'park'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [24.0394, 49.8483]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>Big Backyard Beach Bash and Wine Fest</strong><p>EatBar (2761 Washington Boulevard Arlington VA) is throwing a <a href="http://tallulaeatbar.ticketleap.com/2012beachblanket/" target="_blank" title="Opens in a new window">Big Backyard Beach Bash and Wine Fest</a> on Saturday, serving up conch fritters, fish tacos and crab sliders, and Red Apron hot dogs. 12:00-3:00 p.m. $25.grill hot dogs.</p>',
+                            'icon': 'bar'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-77.090372, 38.881189]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>National Museum and Memorial to the Victims of Occupation</strong><p>The <a href="https://www.lonelyplanet.com/ukraine/western-ukraine/lviv/attractions/national-museum-and-memorial-to-the-victims-of-occupation/a/poi-sig/1277063/360948" target="_blank" title="Opens in a new window">National Museum and Memorial to the Victims of Occupation</a> on Bryullova street was used as a prison by the Poles, Nazis and communists in turn, but the small and very moving exhibition over two floors focuses on Stalinist atrocities in the early years of WWII. Used as a prison right up to 1996, the brutally bare cells, horrific statistics posted throughout and Nazi newsreel from summer 1941 will leave few untouched. Some English explanations.',
+                            'icon': 'museum'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [24.018632413287193, 49.834344650539336]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>Ploshcha Rynok</strong><p><a href="https://www.lonelyplanet.com/ukraine/western-ukraine/lviv/attractions/ploshcha-rynok/a/poi-sig/448569/360948" target="_blank" title="Opens in a new window">Ploshcha Rynok</a> is an old market square that lies at the heart of Lviv. The square was progressively rebuilt after a major fire in the early 16th century destroyed the original. Around 40 townhouses hem the square perimeter. Most of these three- and four-storey buildings have uniform dimensions, with three windows per storey overlooking the square. This was the maximum number of windows allowed tax free and those buildings with four or more belonged to the extremely wealthy.</p>',
+                            'icon': 'rocket'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [24.03158, 49.84142]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>Lvivarnya</strong><p><a href="https://www.lonelyplanet.com/ukraine/western-ukraine/lviv/attractions/lvivarnya/a/poi-sig/448559/360948" target="_blank" title="Opens in a new window">Lvivarnya</a> museum belonging to Lvivs brewery is an impressive, modern experience, a world away for the rickety post-Soviet repositories of the past found in many Ukrainian cities. The well-presented exhibits whet the appetite for the tasting session at the end, which takes place in an impressively renovated bar. To reach the museum, take tram 7 to St Anna Church (where vul Shevchenka peels away from vul Horodotska) then walk north along vul Kleparivska for around 600m.</p>',
+                            'icon': 'museum'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [24.01561400002777802, 49.84778300002777485]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>Lviv History Museum – Rynok 24</strong><p><a href="https://www.lonelyplanet.com/ukraine/western-ukraine/lviv/attractions/high-castle-hill/a/poi-sig/448547/360948" target="_blank" title="Opens in a new window">Lviv History Museum – Rynok 24</a> expounds on the city`s very early days starting with early cultures that inhabited Galicia and ending with the arrival of printing in the city in the 16th century.</p>',
+                            'icon': 'museum'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [24.0324989, 49.8421409]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>Ratusha</strong><p>The Arlington Players\' production of Stephen Sondheim\'s  <a href="https://www.lonelyplanet.com/ukraine/western-ukraine/lviv/attractions/ratusha/a/poi-sig/1311069/360948" target="_blank" title="Opens in a new window"><em>Ratusha</em></a> The city fathers have occupied this location since the 14th century, but the present-day Italianate look dates to 1835. In a sign of openness and transparency, visitors are allowed to roam the corridors of power, but most of them do so on the arduous climb (305 steps from the 4th-floor ticket office) of the 65m-tall tower that looms over the Rynok.</p>',
+                            'icon': 'museum'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [24.0317023, 49.841712]
+                        }
+                    },
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'description':
+                                '<strong>Apteka Museum</strong><p><a href="https://www.lonelyplanet.com/ukraine/western-ukraine/lviv/attractions/apteka-museum/a/poi-sig/448529/360948" target="_blank">Apteka Museum</a> This fascinating pharmacy museum is located inside a still-functioning chemist`s shop dating from 1735. Buy a ticket from the pharmacist and head down into the pidval (cellar) via rooms filled with still medicinally aromatic amphorae, pestles, scales, pill-processing machines and old medicines from pre-WWII Lviv. The damp and musty cellars holds further exhibitions on medicinal themes.</p>',
+                            'icon': 'museum'
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [24.0325721, 49.8426481]
+                        }
+                    }
+                ]
+            }
+        });
+        // Add a layer showing the places.
+        map.addLayer({
+            'id': 'places',
+            'type': 'symbol',
+            'source': 'places',
+            'layout': {
+                'icon-image': '{icon}-15',
+                'icon-allow-overlap': true
+            }
+        });
+
+        // When a click event occurs on a feature in the places layer, open a popup at the
+        // location of the feature, with description HTML from its properties.
+        map.on('click', 'places', function(e) {
+            var coordinates = e.features[0].geometry.coordinates.slice();
+            var description = e.features[0].properties.description;
+
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+
+            new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(description)
+                .addTo(map);
+        });
+
+        // Change the cursor to a pointer when the mouse is over the places layer.
+        map.on('mouseenter', 'places', function() {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'places', function() {
+            map.getCanvas().style.cursor = '';
+        });
+    });
+</script>
+
+</body>
+</html>
